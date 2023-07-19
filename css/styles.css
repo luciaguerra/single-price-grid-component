@@ -6,7 +6,7 @@
     --secondary-color: hsl(179, 47%, 52%);
     --secondary-highlight: hsl(203, 44%, 93%);
     --secondary-highlight-variant: hsla(203, 44%, 93%, 0.661);
-    --font-color: hsl(218, 22%, 67%);
+    --font-color: hsla(217, 22%, 67%, 0.849);
 }
 
 * {
@@ -64,7 +64,6 @@ button {
     margin: 1.8rem 0 0;
     border: none;
     border-radius: 0.3rem;
-    box-shadow: 1px 1px 6px -6px rgba(0, 0, 0, 0.206);
     background-color: var(--primary-highlight);
     cursor: pointer;
 }
@@ -72,6 +71,10 @@ button {
 button:hover {
     background-color:hsl(71, 59%, 57%);
     outline: 1px solid var(--primary-highlight);
+}
+
+button, .container {
+    box-shadow: 1px 1px 6px -6px rgba(0, 0, 0, 0.206);
 }
 
 ul {
@@ -87,10 +90,10 @@ ul {
 }
 
 .container {
-    width: 100%;
+    width: 60%;
     display: grid;
     border-radius: 5rem;
-    grid-template-columns: 26vw repeat(auto-fit, minmax(24vw, 2fr)) 26vw; 
+    grid-template-columns: auto repeat(auto-fit, minmax(24vw, 2fr)) auto; 
     /*grid-template-rows: repeat(25vh, 4fr);*/
     grid-template-areas:
         " . . . ."
@@ -116,4 +119,26 @@ ul {
 .grid-3 {
     background-color: var(--secondary-color);
     grid-area: grid-3;
+}
+
+@media screen and (max-width: 700px) {
+    .container {
+        width: 80%;
+        max-height: 70%;
+        grid-template-areas:
+            ". . . ."
+            ". grid-1 grid-1 ."
+            ". grid-2 grid-2 ."
+            ". grid-3 grid-3 ."
+            ". . . ."
+    }
+
+    .grid-1, .grid-2, .grid-3 {
+        padding: 1.5rem;
+    }
+
+    button {
+        width: 95%;
+        margin: 1.8rem 0 0;
+    }
 }
